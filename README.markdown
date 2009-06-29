@@ -42,7 +42,8 @@ add to spec/spec.opts:
     --format progress
     --format RspecEnhancedProfile:tmp/profile.txt
 
-You can change how many examples you want by overwriting `RspecEnhancedProfile::SHOW_TOP = 100`. (default is 20)
+###Need more then 20 ?
+    PROFILE_SHOW_TOP=100 rake spec
 
 Author
 ======

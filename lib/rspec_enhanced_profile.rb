@@ -1,15 +1,11 @@
 require 'spec/runner/formatter/progress_bar_formatter'
 
 class RspecEnhancedProfile <  Spec::Runner::Formatter::ProgressBarFormatter
-  SHOW_TOP = 20
+  SHOW_TOP = (ENV['PROFILE_SHOW_TOP'] || 20).to_i
 
-  def initialize(options, where)
+  def initialize(*args)
     super
     @example_times = []
-  end
-
-  def method_missing(method, *args)
-    # ignore
   end
 
   def start(*args)
@@ -30,7 +26,6 @@ class RspecEnhancedProfile <  Spec::Runner::Formatter::ProgressBarFormatter
   end
 
   def start_dump
-    sort_times
     dump_group_times
     dump_example_times
 
@@ -39,31 +34,29 @@ class RspecEnhancedProfile <  Spec::Runner::Formatter::ProgressBarFormatter
 
   private
 
-  def sort_times
-    @example_times = @example_times.sort_by {|data| data.last}.reverse
-  end
-
   def dump_example_times
     @output.puts "\n\nSingle examples:\n"
 
-    @example_times[0..SHOW_TOP].each do |group, example, time|
-      @output.print red(sprintf("%.7f", time))
-      @output.puts " #{group} #{example}"
+    sorted_by_time(@example_times)[0..SHOW_TOP].each do |group, example, time|
+      @output.puts "#{red(sprintf("%.7f", time))} #{group} #{example}"
     end
   end
 
   def dump_group_times
     @output.puts "\n\nGroups:\n"
 
-    grouped_times = {}
+    group_times = Hash.new(0)
     @example_times.each do |group, example, time|
-      grouped_times[group]||=0
-      grouped_times[group]+=time
+      group_times[group]+=time
     end
 
-    grouped_times.to_a.sort_by{|k_and_v| k_and_v[1]}.reverse[0..SHOW_TOP].each do |k_and_v|
-      @output.print red(sprintf("%.7f", k_and_v[1]))
-      @output.puts " #{k_and_v[0]}"
+    sorted_by_time(group_times)[0..SHOW_TOP].each do |group,time|
+      @output.puts "#{red(sprintf("%.7f", time))} #{group}"
     end
+  end
+
+  #sorted by last ascending
+  def sorted_by_time(times)
+    times.to_a.sort_by{|x| x.last}.reverse
   end
 end
