@@ -1,6 +1,6 @@
-require 'spec/runner/formatter/progress_bar_formatter'
+require 'rspec/core/formatters/progress_formatter'
 
-class RspecEnhancedProfile <  Spec::Runner::Formatter::ProgressBarFormatter
+class RspecEnhancedProfile <  RSpec::Core::Formatters::ProgressFormatter
   SHOW_TOP = (ENV['PROFILE_SHOW_TOP'] || 20).to_i
 
   def initialize(*args)
