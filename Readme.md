@@ -1,6 +1,7 @@
 RspecEnhancedProfile
 =====================
 Normal profile output only shows top 10 time consuming examples:
+
     Top 10 slowest examples:
     0.5215740 User downgrades to a person
     0.4326950 User finds invalid
@@ -9,6 +10,7 @@ Normal profile output only shows top 10 time consuming examples:
     0.0903790 Festival is valid
 
 This enhanced formatter will give you n-slowes examples AND groups:
+
     Groups:
     5.1150300 Movie
     4.9603220 Icon
@@ -31,22 +33,22 @@ This enhanced formatter will give you n-slowes examples AND groups:
 
 Install
 =======
-    script/plugin install git://github.com/grosser/rspec_enhanced_profile.git
+    rails plugin install git://github.com/grosser/rspec_enhanced_profile.git
 
-###As single formatter:
-add to spec/spec.opts:
+### As only formatter:
+add to .rspec
     --format RspecEnhancedProfile
 
-###As additional formatter:
-add to spec/spec.opts:
+### As additional formatter:
+add to .rspec
     --format progress
     --format RspecEnhancedProfile:tmp/profile.txt
 
-###Need more then 20 ?
+### Need more then 20 ?
     PROFILE_SHOW_TOP=100 rake spec
 
 Author
 ======
-[Michael Grosser](http://pragmatig.wordpress.com)  
-grosser.michael@gmail.com  
+[Michael Grosser](http://grosser.it)<br/>
+michael@grosser.it<br/>
 Hereby placed under public domain, do what you want, just do not hold me accountable...
