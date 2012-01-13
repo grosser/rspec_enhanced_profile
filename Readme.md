@@ -47,6 +47,11 @@ add to .rspec
 ### Need more then 20 ?
     PROFILE_SHOW_TOP=100 rake spec
 
+TODO
+====
+ - add tests (e.g. see [parallel_test formatter tests](https://github.com/grosser/parallel_tests/blob/master/spec/parallel_specs/spec_failure_logger_spec.rb))
+ - make into a gem
+
 Author
 ======
 
