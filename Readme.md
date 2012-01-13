@@ -36,11 +36,13 @@ Install
     rails plugin install git://github.com/grosser/rspec_enhanced_profile.git
 
 ### As only formatter:
-add to .rspec
+
+    # .rspec
     --format RspecEnhancedProfile
 
 ### As additional formatter:
-add to .rspec
+
+    # .rspec
     --format progress
     --format RspecEnhancedProfile:tmp/profile.txt
 
