@@ -49,6 +49,11 @@ add to .rspec
 
 Author
 ======
+
+### [Contributors](http://github.com/grosser/rspec_enhanced_profile/contributors)
+ - [Keeran Raj Hawoldar](https://github.com/keeran)
+
+
 [Michael Grosser](http://grosser.it)<br/>
 michael@grosser.it<br/>
 Hereby placed under public domain, do what you want, just do not hold me accountable...
