@@ -43,6 +43,7 @@ Install
 ### As additional formatter:
 
     # .rspec
+    -I vendor/plugins/rspec_enhanced_profile/lib # if you installed it as rails plugin
     --format progress
     --format RspecEnhancedProfile:tmp/profile.txt
 
